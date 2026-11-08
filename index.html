@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رياضيات الحضارة الإغريقية</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background: #fdfbf7; color: #333; text-align: center; padding: 30px; direction: rtl; }
+        h1 { color: #2c3e50; }
+        .container { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { padding: 10px; font-size: 16px; margin: 10px; }
+        button { background-color: #8e44ad; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #output { font-size: 22px; color: #8e44ad; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>رياضيات الحضارة الإغريقية</h1>
+        <p>أداة تحويل الأعداد إلى النظام اليوناني (الأيوني)</p>
+        <input type="number" id="numInput" min="1" max="999" placeholder="أدخل رقماً بين 1 و 999">
+        <br>
+        <button onclick="convertToGreek()">تحويل</button>
+        <div id="output"></div>
+    </div>
+    <script>
+        function convertToGreek() {
+            let num = parseInt(document.getElementById('numInput').value);
+            const ones = ["", "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι"];
+            const tens = ["", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ"];
+            const hundreds = ["", "τ", "υ", "φ", "χ", "ψ", "ω"];
+            if (isNaN(num)  num <= 0  num > 999) {
+                document.getElementById('output').innerText = "يرجى إدخال رقم بين 1 و 999";
+                return;
+            }
+            let h = Math.floor(num / 100);
+            let t = Math.floor((num % 100) / 10);
+            let o = num % 10;
+            let greekNum = (hundreds[h]  "") + (tens[t]  "") + (ones[o] || "");
+            document.getElementById('output').innerText = "التمثيل اليوناني: " + greekNum;
+        }
+    </script>
+</body>
+</html>
