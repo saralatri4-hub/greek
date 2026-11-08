@@ -1,0 +1,19 @@
+<script>
+        function convertToGreek() {
+            let num = parseInt(document.getElementById('numInput').value);
+            const ones = ["", "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι"];
+            const tens = ["", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ"];
+            const hundreds = ["", "τ", "υ", "φ", "χ", "ψ", "ω"];
+            if (isNaN(num)  num <= 0  num > 999) {
+                document.getElementById('output').innerText = "يرجى إدخال رقم بين 1 و 999";
+                return;
+            }
+            let h = Math.floor(num / 100);
+            let t = Math.floor((num % 100) / 10);
+            let o = num % 10;
+            let greekNum = (hundreds[h]  "") + (tens[t]  "") + (ones[o] || "");
+            document.getElementById('output').innerText = "التمثيل اليوناني: " + greekNum;
+        }
+    </script>
+</body>
+</html>
